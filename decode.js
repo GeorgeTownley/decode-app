@@ -1,4 +1,4 @@
-// Example usage with the provided data
+// data from pastebin
 const encodedMessage = `78 land
   2 sun
   126 too
@@ -319,24 +319,27 @@ function decode(encodedMessage) {
   );
 
   // Sort the keys (numbers) of the map
+
   const sortedNumbers = Array.from(numberWordMap.keys()).sort((a, b) => a - b);
-
-  // Create an array to hold the words of the message
-  let messageWords = [];
-  let currentLineEndNumber = 1;
-  let increment = 1;
-
-  // Construct the pyramid and decode the message
-  for (let number of sortedNumbers) {
-    if (number === currentLineEndNumber) {
-      const word = numberWordMap.get(number);
-      messageWords.push(word);
-      console.log(`Number: ${number}, Word: ${word}`); // This will log the number and its corresponding word
-      increment++;
-      currentLineEndNumber += increment;
-    }
-  }
-
-  // Join the words to form the decoded message
-  return messageWords.join(" ");
+  console.log(sortedNumbers);
 }
+
+//   // Create an array to hold the words of the message
+//   let messageWords = [];
+//   let currentLineEndNumber = 1;
+//   let increment = 1;
+
+//   // Construct the pyramid and decode the message
+//   for (let number of sortedNumbers) {
+//     if (number === currentLineEndNumber) {
+//       const word = numberWordMap.get(number);
+//       messageWords.push(word);
+//       console.log(`Number: ${number}, Word: ${word}`); // This will log the number and its corresponding word
+//       increment++;
+//       currentLineEndNumber += increment;
+//     }
+//   }
+
+//   // Join the words to form the decoded message
+//   return messageWords.join(" ");
+// }
