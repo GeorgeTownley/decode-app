@@ -308,7 +308,7 @@ function decode(encodedMessage) {
 
   console.log("lines");
 
-  // Parse the lines into a map of numbers to words
+  // Parse the lines into a map of numbers to words, also trimmed white space becasue it was breaking array
   const numberWordMap = new Map(
     lines.map((line) => {
       const trimmedLine = line.trim();
