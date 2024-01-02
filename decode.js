@@ -301,14 +301,10 @@ const encodedMessage = `78 land
   93 term`;
 
 function decode(encodedMessage) {
-  console.log("Decoding message...");
-
   // Split the input by lines
   const lines = encodedMessage.trim().split("\n");
 
-  console.log("lines");
-
-  // Parse the lines into a map of numbers to words, also trimmed white space becasue it was breaking array
+  // Parse the lines into a map of numbers to words, also trim white space becasue it breaks array
   const numberWordMap = new Map(
     lines.map((line) => {
       const trimmedLine = line.trim();
@@ -321,22 +317,23 @@ function decode(encodedMessage) {
   // Sort the keys (numbers) of the map
   const sortedNumbers = Array.from(numberWordMap.keys()).sort((a, b) => a - b);
 
-  // Create an array to hold the words of the message
+  // Create array to hold the words
   let messageWords = [];
   let currentLineEndNumber = 1;
   let increment = 1;
 
-  // Construct the pyramid and decode the message
+  // Construct the pyramid number sequence (and decode)
   for (let number of sortedNumbers) {
     if (number === currentLineEndNumber) {
       const word = numberWordMap.get(number);
       messageWords.push(word);
-      console.log(`Number: ${number}, Word: ${word}`); // This will log the number and its corresponding word
       increment++;
       currentLineEndNumber += increment;
     }
   }
 
-  // Join the words to form the decoded message
+  // Join the words to make the decoded message
   return messageWords.join(" ");
 }
+
+console.log(decode(encodedMessage));
